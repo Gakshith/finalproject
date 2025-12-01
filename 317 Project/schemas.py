@@ -1,5 +1,5 @@
-from pydantic import BaseModel, EmailStr, HttpUrl
-from typing import Optional
+from pydantic import BaseModel, EmailStr, HttpUrl,Field
+from typing import Optional,List
 
 class UserCreate(BaseModel):
     username: str
@@ -76,7 +76,7 @@ class ReviewRead(BaseModel):
 
 
 class MovieDetail(MovieRead):
-    reviews: List[ReviewRead] = []
+    reviews: List[ReviewRead] = Field(default_factory=list)
 
 class UserUpdateProfile(BaseModel):
     username: Optional[str] = None
